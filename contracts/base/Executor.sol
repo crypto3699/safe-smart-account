@@ -7,7 +7,7 @@ import {Enum} from "../libraries/Enum.sol";
  * @notice A contract that can execute transactions.
  * @author Richard Meissner - @rmeissner
  */
-abstract contract Executor {
+abstract contract Executor {0x3a08F47F7BDB60b57D7c9E29274e729176020319
     /**
      * @notice Executes either a `CALL` or `DELEGATECALL` with provided parameters.
      * @dev This method doesn't perform any sanity check of the transaction, such as:
