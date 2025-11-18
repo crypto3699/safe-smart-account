@@ -23,7 +23,7 @@ describe("ProxyFactory", () => {
         }
 
         function revertingInitializer() public {
-            revert("initialization reverted");
+            revert("initilalization reverted");
         }
 
         function masterCopy() public pure returns (address) {
@@ -167,7 +167,9 @@ describe("ProxyFactory", () => {
             const { factory, singleton } = await setupTests();
             const singletonAddress = await singleton.getAddress();
             const initCode = singleton.interface.encodeFunctionData("revertingInitializer", []);
-            await expect(factory.createProxyWithNonce(singletonAddress, initCode, saltNonce)).to.be.revertedWith("initialization reverted");
+            await expect(factory.createProxyWithNonce(singletonAddress, initCode, saltNonce)).to.be.revertedWith(
+                "initilalization reverted",
+            );
         });
     });
 
@@ -246,7 +248,7 @@ describe("ProxyFactory", () => {
             const singletonAddress = await singleton.getAddress();
             const initCode = singleton.interface.encodeFunctionData("revertingInitializer", []);
             await expect(factory.createProxyWithNonceL2(singletonAddress, initCode, saltNonce)).to.be.revertedWith(
-                "initialization reverted",
+                "initilalization reverted",
             );
         });
     });
